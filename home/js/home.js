@@ -53,9 +53,9 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
 // ----------------- LISTENERS ----------------------
 
-dateInput.addEventListener("input", maskDateInput, false);
+checkInDate.addEventListener("input", maskDateInput, false);
 
-dateInput.addEventListener("input", maskDateInput, false);
+checkOutDate.addEventListener("input", maskDateInput, false);
 
 // ----------------- FUNCTIONS ----------------------
 
