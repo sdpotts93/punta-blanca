@@ -9,7 +9,7 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
   checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
   // Separate date in parts
-  const dateParts = dateInput.value.split("/");
+  const dateParts = checkInDate.value.split("/");
 
   // Create date object from user input (DD/MM/YYYY)
   // Month is 0-based, that's why we need dataParts[1] - 1
@@ -35,7 +35,7 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
   // Separate date in parts
-  const dateParts = dateInput.value.split("/");
+  const dateParts = checkOutDate.value.split("/");
 
   // Create date object from user input (DD/MM/YYYY)
   // Month is 0-based, that's why we need dataParts[1] - 1
