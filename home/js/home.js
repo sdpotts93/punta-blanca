@@ -135,3 +135,5 @@ function maskDateInput(e) {
     this.selectionStart = this.selectionEnd = selectionStart;
   }
 }
+
+console.log("yes");
