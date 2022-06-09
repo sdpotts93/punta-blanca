@@ -36,7 +36,9 @@ console.log(initialMinCheckoutDate, "initialMinCheckoutDate")
 // Add a day
 initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
 
-checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
+console.log(initialMinCheckoutDate, "initialMinCheckoutDate 2")
+
+checkOutDatepicker.options.setMinDate(initialMinCheckoutDate);
 
 
 // ----------------- LISTENERS ----------------------
