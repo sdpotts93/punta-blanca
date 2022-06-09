@@ -25,7 +25,9 @@ const initialMinCheckoutDate = new Date(Date.UTC(
     mxCityDateInEnglishLocale.split("/")[2],
     String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
     String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
-)).toUTCString();
+)).toISOString();
+
+console.log("initialMinCheckoutDate", initialMinCheckoutDate);
 
 checkOutDatepicker.options.setMinDate(initialMinCheckoutDate);
 
