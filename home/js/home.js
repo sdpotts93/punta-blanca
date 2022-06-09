@@ -12,6 +12,8 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
 
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 
+checkInDatepicker.options.setMaxDate(new Date(new Date().setDate(new Date().getDate() + 2)));
+
 const checkOutDate = document.getElementById("Check-out");
 const checkOutDatepicker = new TheDatepicker.Datepicker(checkOutDate);
 checkOutDatepicker.render();
@@ -87,7 +89,7 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
 
-    checkInDatepicker.options.setMaxDate(new Date(new Date().setDate(new Date().getDate() + 700)));
+    checkInDatepicker.options.setMaxDate(new Date(new Date().setDate(new Date().getDate() + 2)));
 
     checkOutDate.value = "";
     return;
