@@ -6,6 +6,12 @@ checkInDatepicker.render();
 let finalCheckInDate = null;
 
 checkInDatepicker.options.onSelect((event, day, previousDay) => {
+
+  if (!day) {
+    checkInDate.value = "";
+    return;
+  }
+
   checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
   // Separate date in parts
@@ -32,6 +38,12 @@ checkOutDatepicker.render();
 let finalCheckOutDate = null;
 
 checkOutDatepicker.options.onSelect((event, day, previousDay) => {
+
+  if (!day) {
+    checkOutDate.value = "";
+    return;
+  }
+
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
   // Separate date in parts
