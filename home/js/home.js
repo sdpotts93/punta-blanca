@@ -12,6 +12,18 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
 
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 
+const checkOutDate = document.getElementById("Check-out");
+const checkOutDatepicker = new TheDatepicker.Datepicker(checkOutDate);
+checkOutDatepicker.render();
+let finalCheckOutDate = null;
+
+
+// ----------------- LISTENERS ----------------------
+
+checkInDate.addEventListener("input", maskDateInput, false);
+
+checkOutDate.addEventListener("input", maskDateInput, false);
+
 checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
   console.log(day, "day");
@@ -46,12 +58,6 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
 });
 
-
-const checkOutDate = document.getElementById("Check-out");
-const checkOutDatepicker = new TheDatepicker.Datepicker(checkOutDate);
-checkOutDatepicker.render();
-let finalCheckOutDate = null;
-
 checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
@@ -77,12 +83,6 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   finalCheckOutDate = localISOTime;
 
 });
-
-// ----------------- LISTENERS ----------------------
-
-checkInDate.addEventListener("input", maskDateInput, false);
-
-checkOutDate.addEventListener("input", maskDateInput, false);
 
 // ----------------- FUNCTIONS ----------------------
 
