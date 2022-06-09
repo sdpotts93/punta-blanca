@@ -93,7 +93,7 @@ checkoutDatepicker.options.onSelect((event, day, previousDay) => {
 
 
   // Create new Date instance
-  const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber - 1));
+  const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber - 1)).toISOString().split("T")[0];
 
   const formattedMaxCheckinDate = formatISODate(maxCheckinDate);
 
