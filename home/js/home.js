@@ -7,15 +7,10 @@ let finalCheckInDate = null;
 
 // Date in en-US locale so its read correctly
 const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
   timeZone: "America/Mexico_City",
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
-  hourCycle: "h24",
-  timeZoneName: 'short',
 });
 
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
@@ -27,21 +22,12 @@ let finalCheckOutDate = null;
 
 // Create new Date instance
 const initialMinCheckoutDate = new Date(Date.UTC(
-  mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
-  String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
-  mxCityDateInEnglishLocale.split("/")[1]
-));
+    mxCityDateInEnglishLocale.split("/")[2],
+    String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
+    String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
+)).toUTCString();
 
-console.log(initialMinCheckoutDate, "initialMinCheckoutDate")
-// Add a day
-initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
-
-console.log(initialMinCheckoutDate, "initialMinCheckoutDate 2")
-console.log(initialMinCheckoutDate.toUTCString(), "initialMinCheckoutDate 3")
-
-
-checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
-
+checkOutDatepicker.options.setMinDate(initialMinCheckoutDate);
 
 // ----------------- LISTENERS ----------------------
 
@@ -55,11 +41,10 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
     // Create new Date instance
     const initialMinCheckoutDate = new Date(Date.UTC(
-      mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
-      String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
-      mxCityDateInEnglishLocale.split("/")[1]
-    ));
-
+        mxCityDateInEnglishLocale.split("/")[2],
+        String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
+        String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
+    )).toUTCString();
 
     // Add a day
     initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
