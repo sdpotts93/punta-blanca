@@ -11,7 +11,7 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
   minute: "2-digit",
   second: "2-digit",
   timeZone: "America/Mexico_City",
-  year: '2-digit',
+  year: 'numeric',
   month: '2-digit',
   day: '2-digit',
   hourCycle: "h24",
