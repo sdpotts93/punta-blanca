@@ -87,7 +87,7 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
 
-    checkInDatepicker.options.setMaxDate(new Date().setDate(new Date().getDate() + 700));
+    checkInDatepicker.options.setMaxDate(new Date(new Date().setDate(new Date().getDate() + 700)));
 
     checkOutDate.value = "";
     return;
@@ -98,6 +98,8 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
   // Add a day
   maxCheckinDate.setDate(day.dayNumber - 1);
+
+  console.log(maxCheckinDate, "maxCheckinDate")
 
   checkInDatepicker.options.setMaxDate(new Date(maxCheckinDate).toUTCString());
 
