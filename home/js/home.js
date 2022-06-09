@@ -96,7 +96,6 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber));
 
 
-  console.log(maxCheckinDate, "maxCheckinDate")
   // Add a day
   maxCheckinDate.setDate(day.dayNumber - 1);
 
