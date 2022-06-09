@@ -7,7 +7,15 @@ let finalCheckInDate = null;
 
 // Date in en-US locale so its read correctly
 const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
   timeZone: "America/Mexico_City",
+  year: '2-digit',
+  month: '2-digit',
+  day: '2-digit',
+  hourCycle: "h24",
+  timeZoneName: 'short',
 });
 
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
@@ -19,9 +27,9 @@ let finalCheckOutDate = null;
 
 // Create new Date instance
 const intialMinCheckoutDate = new Date(Date.UTC(
-  new Date(mxCityDateInEnglishLocale).getFullYear(),
-  new Date(mxCityDateInEnglishLocale).getMonth(),
-  new Date(mxCityDateInEnglishLocale).getDate()
+  mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
+  String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
+  mxCityDateInEnglishLocale.split("/")[1]
 ));
 
 // Add a day
@@ -42,10 +50,11 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
     // Create new Date instance
     const intialMinCheckoutDate = new Date(Date.UTC(
-      new Date(mxCityDateInEnglishLocale).getFullYear(),
-      new Date(mxCityDateInEnglishLocale).getMonth(),
-      new Date(mxCityDateInEnglishLocale).getDate()
+      mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
+      String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
+      mxCityDateInEnglishLocale.split("/")[1]
     ));
+
 
     // Add a day
     intialMinCheckoutDate.setDate(intialMinCheckoutDate.getDate() + 1);
