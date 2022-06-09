@@ -17,6 +17,18 @@ const checkOutDatepicker = new TheDatepicker.Datepicker(checkOutDate);
 checkOutDatepicker.render();
 let finalCheckOutDate = null;
 
+// Create new Date instance
+const intialMinCheckoutDate = new Date(Date.UTC(
+  mxCityDateInEnglishLocale.getDate(),
+  mxCityDateInEnglishLocale.getMonth(),
+  mxCityDateInEnglishLocale.getFullYear()
+));
+
+// Add a day
+intialMinCheckoutDate.setDate(intialMinCheckoutDate.getDate() + 1);
+
+checkOutDatepicker.options.setMinDate(intialMinCheckoutDate.toUTCString());
+
 
 // ----------------- LISTENERS ----------------------
 
@@ -26,9 +38,20 @@ checkOutDate.addEventListener("input", maskDateInput, false);
 
 checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
-  console.log(day, "day");
-
   if (!day) {
+
+    // Create new Date instance
+    const intialMinCheckoutDate = new Date(Date.UTC(
+      mxCityDateInEnglishLocale.getDate(),
+      mxCityDateInEnglishLocale.getMonth(),
+      mxCityDateInEnglishLocale.getFullYear()
+    ));
+
+    // Add a day
+    intialMinCheckoutDate.setDate(intialMinCheckoutDate.getDate() + 1);
+
+    checkOutDatepicker.options.setMinDate(intialMinCheckoutDate.toUTCString());
+
     checkInDate.value = "";
     return;
   }
@@ -38,8 +61,6 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
   // Add a day
   minCheckoutDate.setDate(day.dayNumber + 1);
-
-  console.log(minCheckoutDate, "minCheckoutDate");
 
   checkOutDatepicker.options.setMinDate(minCheckoutDate.toUTCString());
 
