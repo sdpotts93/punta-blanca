@@ -93,6 +93,8 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
     return;
   }
 
+  console.log(previousDay, "previousDay", day, "day", event, "event");
+
   checkInDatepicker.options.setMaxDate(new Date(Date.UTC(
     previousDay.year,
     previousDay.month,
