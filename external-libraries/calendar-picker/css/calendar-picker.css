@@ -208,6 +208,11 @@
   top: 41px;
   right: -26px;
 }
+
+.reserve-form {
+  position: relative;
+}
+
 .the-datepicker__fade-out-left {
   animation-name: the-datepicker-fade-out-left;
 }
