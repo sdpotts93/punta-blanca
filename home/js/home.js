@@ -26,16 +26,17 @@ checkOutDatepicker.render();
 let finalCheckOutDate = null;
 
 // Create new Date instance
-const intialMinCheckoutDate = new Date(Date.UTC(
+const initialMinCheckoutDate = new Date(Date.UTC(
   mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
   String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
   mxCityDateInEnglishLocale.split("/")[1]
 ));
 
+console.log(initialMinCheckoutDate, "initialMinCheckoutDate")
 // Add a day
-intialMinCheckoutDate.setDate(intialMinCheckoutDate.getDate() + 1);
+initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
 
-checkOutDatepicker.options.setMinDate(intialMinCheckoutDate.toUTCString());
+checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
 
 
 // ----------------- LISTENERS ----------------------
@@ -49,7 +50,7 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
   if (!day) {
 
     // Create new Date instance
-    const intialMinCheckoutDate = new Date(Date.UTC(
+    const initialMinCheckoutDate = new Date(Date.UTC(
       mxCityDateInEnglishLocale.split("/")[2].split(",")[0],
       String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
       mxCityDateInEnglishLocale.split("/")[1]
@@ -57,9 +58,9 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
 
     // Add a day
-    intialMinCheckoutDate.setDate(intialMinCheckoutDate.getDate() + 1);
+    initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
 
-    checkOutDatepicker.options.setMinDate(intialMinCheckoutDate.toUTCString());
+    checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
 
     checkInDate.value = "";
     return;
