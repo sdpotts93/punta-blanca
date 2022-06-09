@@ -1,9 +1,8 @@
 // ----------------- VARIABLES ----------------------
 
-const checkInDate = document.getElementById("Check-in");
-const checkInDatepicker = new TheDatepicker.Datepicker(checkInDate);
-checkInDatepicker.render();
-let finalCheckInDate = null;
+const checkinDate = document.getElementById("Check-in");
+const checkinDatepicker = new TheDatepicker.Datepicker(checkinDate);
+checkinDatepicker.render();
 
 // Date in en-US locale so its read correctly
 const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
@@ -13,12 +12,14 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
   day: '2-digit',
 });
 
-checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
+checkinDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 
-const checkOutDate = document.getElementById("Check-out");
-const checkOutDatepicker = new TheDatepicker.Datepicker(checkOutDate);
-checkOutDatepicker.render();
-let finalCheckOutDate = null;
+let checkinParams = "";
+
+
+const checkoutDate = document.getElementById("Check-out");
+const checkoutDatepicker = new TheDatepicker.Datepicker(checkoutDate);
+checkoutDatepicker.render();
 
 // Create new Date instance
 const initialMinCheckoutDate = new Date(Date.UTC(
@@ -29,15 +30,17 @@ const initialMinCheckoutDate = new Date(Date.UTC(
 
 const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
 
-checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
+checkoutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
+
+let checkoutParams = "";
 
 // ----------------- LISTENERS ----------------------
 
-checkInDate.addEventListener("input", maskDateInput, false);
+checkinDate.addEventListener("input", maskDateInput, false);
 
-checkOutDate.addEventListener("input", maskDateInput, false);
+checkoutDate.addEventListener("input", maskDateInput, false);
 
-checkInDatepicker.options.onSelect((event, day, previousDay) => {
+checkinDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
 
@@ -50,9 +53,9 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
     const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
 
-    checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
+    checkoutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 
-    checkInDate.value = "";
+    checkinDate.value = "";
     return;
   }
 
@@ -61,32 +64,21 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
   const formattedMinCheckoutDate = formatISODate(minCheckoutDate);
 
-  checkOutDatepicker.options.setMinDate(formattedMinCheckoutDate);
+  checkoutDatepicker.options.setMinDate(formattedMinCheckoutDate);
 
-  checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
+  checkinDate.value = `${padNumber(day.dayNumber)}-${padNumber(day.month)}-${day.year}`;
 
-  // Separate date in parts
-  const dateParts = checkInDate.value.split("/");
-
-  // Create date object from user input (DD/MM/YYYY)
-  // Month is 0-based, that's why we need dataParts[1] - 1
-  const dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]).getTime();
-
-  const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-
-  const localISOTime = new Date(dateObject - tzoffset).toISOString()
-
-  finalCheckInDate = localISOTime;
+  checkinParams = `${day.year}-${padNumber(day.month)}-${padNumber(day.dayNumber)}`
 
 });
 
-checkOutDatepicker.options.onSelect((event, day, previousDay) => {
+checkoutDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
 
-    checkInDatepicker.options.setMaxDate(null);
+    checkinDatepicker.options.setMaxDate(null);
 
-    checkOutDate.value = "";
+    checkoutDate.value = "";
     return;
   }
 
@@ -94,24 +86,13 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   // Create new Date instance
   const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber - 1));
 
-  const formattedMaxCheckinDate = formatISODate(minCheckoutDate);
+  const formattedMaxCheckinDate = formatISODate(maxCheckinDate);
 
-  checkInDatepicker.options.setMaxDate(formattedMaxCheckinDate);
+  checkinDatepicker.options.setMaxDate(formattedMaxCheckinDate);
 
-  checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
+  checkoutDate.value = `${padNumber(day.dayNumber)}-${padNumber(day.month)}-${day.year}`;
 
-  // Separate date in parts
-  const dateParts = checkOutDate.value.split("/");
-
-  // Create date object from user input (DD/MM/YYYY)
-  // Month is 0-based, that's why we need dataParts[1] - 1
-  const dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]).getTime();
-
-  const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-
-  const localISOTime = new Date(dateObject - tzoffset).toISOString()
-
-  finalCheckOutDate = localISOTime;
+  checkoutParams = `${day.year}-${padNumber(day.month)}-${padNumber(day.dayNumber)}`
 
 });
 
