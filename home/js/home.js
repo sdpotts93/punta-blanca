@@ -34,10 +34,14 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
   }
 
   // Create new Date instance
-  var date = new Date();
+  const minCheckoutDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
 
   // Add a day
-  date.setDate(date.getDate() + 1);
+  minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
+
+  console.log(minCheckoutDate, "minCheckoutDate");
+
+  checkOutDatepicker.options.setMinDate(minCheckoutDate);
 
   checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
