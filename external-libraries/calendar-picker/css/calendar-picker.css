@@ -179,11 +179,11 @@
 }
 .the-datepicker__main td.the-datepicker__day--selected a.the-datepicker__button .the-datepicker__day-content,
 .the-datepicker__main td.the-datepicker__day--selected.the-datepicker__day--highlighted a.the-datepicker__button .the-datepicker__day-content {
-  background-color: #fb6825;
+  background-color: #da3777;
 }
 .the-datepicker__main td.the-datepicker__day--selected a.the-datepicker__button:hover .the-datepicker__day-content,
 .the-datepicker__main td.the-datepicker__day--selected.the-datepicker__day--highlighted a.the-datepicker__button:hover .the-datepicker__day-content {
-  background-color: #fb6825;
+  background-color: #da3777;
 }
 .the-datepicker__main .the-datepicker__day--weekend,
 .the-datepicker__main .the-datepicker__week-day--weekend,
@@ -196,7 +196,7 @@
 }
 .the-datepicker__deselect-button {
   text-decoration: none;
-  color: #fb6825;
+  color: #da3777;
   font-weight: bold;
 }
 .the-datepicker__deselect-button:hover {
