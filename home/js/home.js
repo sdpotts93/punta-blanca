@@ -98,9 +98,9 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   maxCheckinDate.setDate(day.dayNumber - 1);
 
   console.log(maxCheckinDate, "maxCheckinDate");
-  console.log(maxCheckinDate.toISOString(), "maxCheckinDate ISO");
+  console.log(maxCheckinDate.toISOString(), "maxCheckinDate ISO 2");
 
-  checkInDatepicker.options.setMaxDate(maxCheckinDate.toUTCString());
+  checkInDatepicker.options.setMaxDate(maxCheckinDate);
 
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
