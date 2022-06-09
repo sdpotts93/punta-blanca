@@ -13,6 +13,8 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
   day: '2-digit',
 });
 
+console.log("mxCityDateInEnglishLocale", mxCityDateInEnglishLocale);
+
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 
 const checkOutDate = document.getElementById("Check-out");
@@ -46,10 +48,10 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
         mxCityDateInEnglishLocale.split("/")[2],
         String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
         String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
-    )).toUTCString();
+    )).toISOString().split("T")[0];
 
-    // Add a day
-    initialMinCheckoutDate.setDate(initialMinCheckoutDate.getDate() + 1);
+
+    console.log("initialMinCheckoutDate 2", initialMinCheckoutDate);
 
     checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
 
