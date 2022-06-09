@@ -86,9 +86,18 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
   if (!day) {
+
+    checkInDatepicker.options.setMaxDate(new Date().setDate(new Date().getDate() + 700));
+
     checkOutDate.value = "";
     return;
   }
+
+  checkInDatepicker.options.setMaxDate(new Date(Date.UTC(
+    previousDay.year,
+    previousDay.month,
+    previousDay.dayNumber
+  )).toUTCString());
 
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
