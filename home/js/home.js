@@ -25,7 +25,7 @@ const initialMinCheckoutDate = new Date(Date.UTC(
     mxCityDateInEnglishLocale.split("/")[2],
     String(parseInt(mxCityDateInEnglishLocale.split("/")[0]) - 1),
     String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
-)).toISOString();
+)).toISOString().split("T")[0];
 
 console.log("initialMinCheckoutDate", initialMinCheckoutDate);
 
