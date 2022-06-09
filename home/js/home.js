@@ -93,13 +93,13 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
     return;
   }
 
-  console.log(previousDay, "previousDay", day, "day", event, "event");
+  // Create new Date instance
+  const maxCheckinDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
 
-  checkInDatepicker.options.setMaxDate(new Date(Date.UTC(
-    previousDay.year,
-    previousDay.month,
-    previousDay.dayNumber
-  )).toUTCString());
+  // Add a day
+  maxCheckinDate.setDate(day.dayNumber - 1);
+
+  checkInDatepicker.options.setMaxDate(new Date(maxCheckinDate).toUTCString());
 
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
