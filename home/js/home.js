@@ -13,8 +13,6 @@ const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
   day: '2-digit',
 });
 
-console.log("mxCityDateInEnglishLocale", mxCityDateInEnglishLocale);
-
 checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 
 const checkOutDate = document.getElementById("Check-out");
@@ -29,11 +27,7 @@ const initialMinCheckoutDate = new Date(Date.UTC(
     String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
 )).toISOString().split("T")[0];
 
-console.log("initialMinCheckoutDate", initialMinCheckoutDate);
-
 const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
-
-console.log("formattedInitialMinCheckoutDate", formattedInitialMinCheckoutDate);
 
 checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 
@@ -54,12 +48,7 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
         String(parseInt(mxCityDateInEnglishLocale.split("/")[1]) + 1)
     )).toISOString().split("T")[0];
 
-
-    console.log("initialMinCheckoutDate 2", initialMinCheckoutDate);
-
     const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
-
-    console.log("formattedInitialMinCheckoutDate", formattedInitialMinCheckoutDate);
 
     checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 
@@ -68,12 +57,11 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
   }
 
   // Create new Date instance
-  const minCheckoutDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber));
+  const minCheckoutDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber + 1)).toISOString().split("T")[0];
 
-  // Add a day
-  minCheckoutDate.setDate(day.dayNumber + 1);
+  const formattedMinCheckoutDate = formatISODate(minCheckoutDate);
 
-  checkOutDatepicker.options.setMinDate(minCheckoutDate.toUTCString());
+  checkOutDatepicker.options.setMinDate(formattedMinCheckoutDate);
 
   checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
@@ -104,13 +92,11 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 
 
   // Create new Date instance
-  const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber));
+  const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber - 1));
 
+  const formattedMaxCheckinDate = formatISODate(minCheckoutDate);
 
-  // Add a day
-  maxCheckinDate.setDate(day.dayNumber - 1);
-
-  checkInDatepicker.options.setMaxDate(maxCheckinDate.toUTCString());
+  checkInDatepicker.options.setMaxDate(formattedMaxCheckinDate);
 
   checkOutDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
