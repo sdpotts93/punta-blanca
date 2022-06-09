@@ -5,12 +5,27 @@ const checkInDatepicker = new TheDatepicker.Datepicker(checkInDate);
 checkInDatepicker.render();
 let finalCheckInDate = null;
 
+// Date in en-US locale so its read correctly
+const mxCityDateInEnglishLocale = new Date().toLocaleString("en-US", {
+  timeZone: "America/Mexico_City",
+});
+
+checkInDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
+
 checkInDatepicker.options.onSelect((event, day, previousDay) => {
+
+  console.log(day, "day");
 
   if (!day) {
     checkInDate.value = "";
     return;
   }
+
+  // Create new Date instance
+  var date = new Date();
+
+  // Add a day
+  date.setDate(date.getDate() + 1);
 
   checkInDate.value = `${padNumber(day.dayNumber)}/${padNumber(day.month)}/${day.year}`;
 
