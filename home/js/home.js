@@ -19,9 +19,9 @@ let finalCheckOutDate = null;
 
 // Create new Date instance
 const intialMinCheckoutDate = new Date(Date.UTC(
-  mxCityDateInEnglishLocale.getDate(),
-  mxCityDateInEnglishLocale.getMonth(),
-  mxCityDateInEnglishLocale.getFullYear()
+  new Date(mxCityDateInEnglishLocale).getDate(),
+  new Date(mxCityDateInEnglishLocale).getMonth(),
+  new Date(mxCityDateInEnglishLocale).getFullYear()
 ));
 
 // Add a day
@@ -42,9 +42,9 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
     // Create new Date instance
     const intialMinCheckoutDate = new Date(Date.UTC(
-      mxCityDateInEnglishLocale.getDate(),
-      mxCityDateInEnglishLocale.getMonth(),
-      mxCityDateInEnglishLocale.getFullYear()
+      new Date(mxCityDateInEnglishLocale).getDate(),
+      new Date(mxCityDateInEnglishLocale).getMonth(),
+      new Date(mxCityDateInEnglishLocale).getFullYear()
     ));
 
     // Add a day
