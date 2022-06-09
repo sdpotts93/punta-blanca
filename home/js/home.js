@@ -77,8 +77,6 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
   const localISOTime = new Date(dateObject - tzoffset).toISOString()
 
-  console.log(localISOTime, "localISOTime");
-
   finalCheckInDate = localISOTime;
 
 });
@@ -99,6 +97,8 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   // Add a day
   maxCheckinDate.setDate(day.dayNumber - 1);
 
+  console.log(maxCheckinDate, "maxCheckinDate");
+  console.log(maxCheckinDate.toISOString(), "maxCheckinDate ISO");
 
   checkInDatepicker.options.setMaxDate(maxCheckinDate.toUTCString());
 
@@ -199,5 +199,3 @@ function maskDateInput(e) {
     this.selectionStart = this.selectionEnd = selectionStart;
   }
 }
-
-console.log("yes");
