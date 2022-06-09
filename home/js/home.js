@@ -56,9 +56,12 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
     return;
   }
 
+  console.log(day.month, "day month")
   // Create new Date instance
   const minCheckoutDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
 
+
+  console.log(minCheckoutDate, "minCheckoutDate")
   // Add a day
   minCheckoutDate.setDate(day.dayNumber + 1);
 
@@ -91,14 +94,16 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
     return;
   }
 
+
+  console.log(day.month, "day month")
+
   // Create new Date instance
   const maxCheckinDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
 
+
+  console.log(maxCheckinDate, "maxCheckinDate")
   // Add a day
   maxCheckinDate.setDate(day.dayNumber - 1);
-
-  console.log(maxCheckinDate, "maxCheckinDate");
-  console.log(maxCheckinDate.toISOString(), "maxCheckinDate");
 
   checkInDatepicker.options.setMaxDate(maxCheckinDate.toUTCString());
 
@@ -114,8 +119,6 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
 
   const localISOTime = new Date(dateObject - tzoffset).toISOString()
-
-  console.log(localISOTime, "localISOTime");
 
   finalCheckOutDate = localISOTime;
 
