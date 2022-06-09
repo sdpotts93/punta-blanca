@@ -31,7 +31,11 @@ const initialMinCheckoutDate = new Date(Date.UTC(
 
 console.log("initialMinCheckoutDate", initialMinCheckoutDate);
 
-checkOutDatepicker.options.setMinDate(initialMinCheckoutDate);
+const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
+
+console.log("formattedInitialMinCheckoutDate", formattedInitialMinCheckoutDate);
+
+checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 
 // ----------------- LISTENERS ----------------------
 
@@ -53,7 +57,11 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
 
     console.log("initialMinCheckoutDate 2", initialMinCheckoutDate);
 
-    checkOutDatepicker.options.setMinDate(initialMinCheckoutDate.toUTCString());
+    const formattedInitialMinCheckoutDate = formatISODate(initialMinCheckoutDate);
+
+    console.log("formattedInitialMinCheckoutDate", formattedInitialMinCheckoutDate);
+
+    checkOutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 
     checkInDate.value = "";
     return;
@@ -122,6 +130,11 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
 });
 
 // ----------------- FUNCTIONS ----------------------
+
+function formatISODate(date) {
+  const dateArray = date.split("-");
+  return `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`
+}
 
 // Fills in a number if number < 10 with padding 0s to be have a lengh of two
 function padNumber(n) {
