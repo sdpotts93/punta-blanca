@@ -197,10 +197,16 @@
 .the-datepicker__deselect-button {
   text-decoration: none;
   color: #da3777;
-  font-weight: bold;
+  font-weight: 100;
+  font-size: 41px;
+  font-family: none;
 }
 .the-datepicker__deselect-button:hover {
   text-decoration: none;
+}
+.the-datepicker__deselect {
+  top: 41px;
+  right: -26px;
 }
 .the-datepicker__fade-out-left {
   animation-name: the-datepicker-fade-out-left;
