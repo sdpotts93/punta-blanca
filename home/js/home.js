@@ -56,12 +56,9 @@ checkInDatepicker.options.onSelect((event, day, previousDay) => {
     return;
   }
 
-  console.log(day.month, "day month")
   // Create new Date instance
-  const minCheckoutDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
+  const minCheckoutDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber));
 
-
-  console.log(minCheckoutDate, "minCheckoutDate")
   // Add a day
   minCheckoutDate.setDate(day.dayNumber + 1);
 
@@ -95,10 +92,8 @@ checkOutDatepicker.options.onSelect((event, day, previousDay) => {
   }
 
 
-  console.log(day.month, "day month")
-
   // Create new Date instance
-  const maxCheckinDate = new Date(Date.UTC(day.year, day.month, day.dayNumber));
+  const maxCheckinDate = new Date(Date.UTC(day.year, day.month-1, day.dayNumber));
 
 
   console.log(maxCheckinDate, "maxCheckinDate")
