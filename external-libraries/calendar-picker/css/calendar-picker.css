@@ -55,7 +55,7 @@
   border-radius: 0.3em;
 }
 .the-datepicker__main a.the-datepicker__button:hover {
-  background-color: #ffdac9;
+  background-color: #da37774d;
   text-decoration: none;
 }
 .the-datepicker__main .the-datepicker__title {
@@ -159,10 +159,10 @@
   background-color: transparent;
 }
 .the-datepicker__main td.the-datepicker__day a.the-datepicker__button:hover .the-datepicker__day-content {
-  background-color: #ffdac9;
+  background-color: #da37774d;
 }
 .the-datepicker__main td.the-datepicker__day--highlighted a.the-datepicker__button .the-datepicker__day-content {
-  background-color: #ffdac9;
+  background-color: #da37774d;
 }
 .the-datepicker__main td.the-datepicker__day--outside a.the-datepicker__button {
   color: #8ac4ff;
