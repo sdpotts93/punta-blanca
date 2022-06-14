@@ -37,7 +37,7 @@ let checkoutParams = "";
 
 const checkAvailabilityButton = document.querySelector("#email-form > input");
 
-const bookNowHeader = document.querySelector("body > div > div:nth-child(2) > div > div.div-block > a.navlink.pinks");
+const bookNowHeader = document.querySelector("body > div.page-wrapper > div:nth-child(2) > div > div.nav-right-cta.top-menu");
 
 bookNowHeader.href = "https://hotels.cloudbeds.com/reservation/HkDshd";
 
