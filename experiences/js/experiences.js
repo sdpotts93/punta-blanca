@@ -35,7 +35,7 @@ checkoutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 let checkoutParams = "";
 
 
-const checkAvailabilityButton = document.querySelector("#wf-form-room-reservation > input");
+const checkAvailabilityButton = document.querySelector("#email-form > input");
 
 
 // ----------------- LISTENERS ----------------------
