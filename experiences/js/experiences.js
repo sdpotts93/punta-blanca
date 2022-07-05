@@ -1,6 +1,6 @@
 // ----------------- VARIABLES ----------------------
 
-const checkinDate = document.getElementById("Check-in");
+const checkinDate = document.getElementById("Check-in-2");
 const checkinDatepicker = new TheDatepicker.Datepicker(checkinDate);
 checkinDatepicker.render();
 
@@ -17,7 +17,7 @@ checkinDatepicker.options.setMinDate(mxCityDateInEnglishLocale);
 let checkinParams = "";
 
 
-const checkoutDate = document.getElementById("Check-out");
+const checkoutDate = document.getElementById("Check-out-2");
 const checkoutDatepicker = new TheDatepicker.Datepicker(checkoutDate);
 checkoutDatepicker.render();
 
@@ -35,7 +35,11 @@ checkoutDatepicker.options.setMinDate(formattedInitialMinCheckoutDate);
 let checkoutParams = "";
 
 
-const checkAvailabilityButton = document.querySelector("#email-form > input");
+const checkAvailabilityButton = document.querySelector("#wf-form-room-reservation > input");
+
+const bookNowHeader = document.getElementById("book");
+
+bookNowHeader.href = "https://hotels.cloudbeds.com/reservation/HkDshd";
 
 // ----------------- LISTENERS ----------------------
 
