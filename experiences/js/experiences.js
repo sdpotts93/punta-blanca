@@ -37,9 +37,6 @@ let checkoutParams = "";
 
 const checkAvailabilityButton = document.querySelector("#wf-form-room-reservation > input");
 
-const bookNowHeader = document.getElementById("book");
-
-bookNowHeader.href = "https://hotels.cloudbeds.com/reservation/HkDshd";
 
 // ----------------- LISTENERS ----------------------
 
