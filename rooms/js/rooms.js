@@ -112,6 +112,12 @@ function handleCheckAvailability(e) {
   e.stopPropagation();
   if (checkoutParams && checkinParams) {
     window.location.href = `https://hotels.cloudbeds.com/reservation/HkDshd#checkin=${checkinParams}&checkout=${checkoutParams}`
+  } else if (checkoutParams) {
+    window.location.href = `https://hotels.cloudbeds.com/reservation/HkDshd#checkout=${checkoutParams}`
+  } else if (checkinParams) {
+    window.location.href = `https://hotels.cloudbeds.com/reservation/HkDshd#checkin=${checkinParams}`
+  } else {
+    window.location.href = `https://hotels.cloudbeds.com/reservation/HkDshd#`
   }
 }
 
